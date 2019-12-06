@@ -1,0 +1,73 @@
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Adactin {
+	public static void main(String[] args) throws AWTException, InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "C:\\Code Depository\\Selenium Day 4\\driver\\chromedriver.exe");
+		WebDriver n = new ChromeDriver();
+		n.get("http://www.adactin.com/HotelApp/index.php");
+		WebElement a = n.findElement(By.id("username"));
+		a.sendKeys("Hemanth7010");
+		WebElement b = n.findElement(By.id("password"));
+		b.sendKeys("123456");
+		WebElement c = n.findElement(By.id("login"));
+		c.click();
+		WebElement d = n.findElement(By.name("location"));
+		Select s = new Select(d);
+		s.selectByValue("London");
+		WebElement e = n.findElement(By.id("hotels"));
+		Select s1 = new Select(e);
+		s1.selectByIndex(1);
+		WebElement f = n.findElement(By.id("room_nos"));
+		Select s2 = new Select(f);
+		s2.selectByIndex(2);
+		WebElement g = n.findElement(By.id("datepick_in"));
+		Robot q = new Robot();
+		q.keyPress(KeyEvent.VK_CONTROL);
+		q.keyPress(KeyEvent.VK_A);
+		q.keyRelease(KeyEvent.VK_CONTROL);
+		q.keyRelease(KeyEvent.VK_A);
+		g.sendKeys("30/10/19");
+		WebElement h = n.findElement(By.id("child_room"));
+		Select s3 = new Select(h);
+		s3.selectByIndex(1);
+		WebElement j = n.findElement(By.id("Submit"));
+		j.click();
+		WebElement k = n.findElement(By.id("radiobutton_1"));
+		k.click();
+		WebElement w = n.findElement(By.id("continue"));
+		w.click();
+		WebElement r = n.findElement(By.id("first_name"));
+		r.sendKeys("Hemanth");
+		WebElement t = n.findElement(By.id("last_name"));
+		t.sendKeys("k");
+		WebElement y = n.findElement(By.id("address"));
+		y.sendKeys("19,2nd street,thoraipakkam,chennai");
+		WebElement u = n.findElement(By.id("cc_num"));
+		u.sendKeys("1234567891547896");
+		WebElement i = n.findElement(By.id("cc_type"));
+		Select s4 = new Select(i);
+		s4.selectByIndex(1);
+		WebElement t1 = n.findElement(By.id("cc_exp_month"));
+		Select s5 = new Select(t1);
+		s5.selectByIndex(1);
+		WebElement t2 = n.findElement(By.id("cc_exp_year"));
+		Select s6 = new Select(t2);
+		s6.selectByIndex(9);
+		WebElement t3 = n.findElement(By.id("cc_cvv"));
+		t3.sendKeys("654");
+		WebElement t4 = n.findElement(By.id("book_now"));
+		t4.click();
+		Thread.sleep(7000);
+		WebElement t5 = n.findElement(By.id("order_no"));
+		String or = t5.getAttribute("value");
+		System.out.println(or);
+	}
+}
